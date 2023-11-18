@@ -10,30 +10,34 @@ class Header(models.Model):
 
 
 class ProvideServices(models.Model):
-    # svg =
+    svg = models.ImageField(upload_to="uploads", validators=[])
     title = models.CharField(max_length=50)
     text = models.TextField(max_length=200)
 
 
 class WorkExperience(models.Model):
     title = models.CharField(max_length=50)
-    duration = models.TextField(max_length=50)
+    description = models.TextField(max_length=100)
+    start_date = models.TextField(max_length=50)
+    end_date = models.TextField(max_length=50)
+    link = models.TextField(max_length=100)
 
 
 class Education(models.Model):
     title = models.CharField(max_length=50)
-    duration = models.TextField(max_length=50)
+    description = models.TextField(max_length=100)
+    start_date = models.TextField(max_length=50)
+    end_date = models.TextField(max_length=50)
+    link = models.TextField(max_length=100)
 
-
-# class FreelanceClients(models.models):
-#      svg =
 
 class Skills(models.Model):
     text = models.CharField(max_length=30)
 
 
-# class tools(models.Model):
-#     svg =
+class Tools(models.Model):
+    svg = models.ImageField(upload_to="uploads", validators=[])
+
 
 class Stats(models.Model):
     projectsCompleted = models.IntegerField(default=0)
@@ -45,3 +49,4 @@ class Stats(models.Model):
 class ClientsFeedbacks(models.Model):
     text = models.CharField(max_length=200)
     img = models.ImageField(upload_to="uploads")
+    name = models.CharField(max_length=100)
