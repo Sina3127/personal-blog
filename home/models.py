@@ -4,39 +4,43 @@ from django.db import models
 
 
 class Header(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.TextField(max_length=50)
     paragraph = models.TextField(max_length=200)
-    img = models.ImageField(upload_to="uploads")
+    img = models.ImageField(upload_to="uploads/")
 
 
 class ProvideServices(models.Model):
-    svg = models.ImageField(upload_to="uploads", validators=[])
-    title = models.CharField(max_length=50)
+    svg = models.ImageField(upload_to="uploads/")
+    title = models.TextField(max_length=50)
     text = models.TextField(max_length=200)
 
 
 class WorkExperience(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.TextField(max_length=50)
     description = models.TextField(max_length=100)
-    start_date = models.TextField(max_length=50)
-    end_date = models.TextField(max_length=50)
-    link = models.TextField(max_length=100)
+    start_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
+    link = models.TextField(max_length=100, null=True, blank=True)
 
 
 class Education(models.Model):
-    title = models.CharField(max_length=50)
+    title = models.TextField(max_length=50)
     description = models.TextField(max_length=100)
-    start_date = models.TextField(max_length=50)
-    end_date = models.TextField(max_length=50)
-    link = models.TextField(max_length=100)
+    start_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
+    link = models.TextField(max_length=100, null=True, blank=True)
+
+
+class FreelanceClients(models.Model):
+    logo = models.ImageField(upload_to="uploads/")
 
 
 class Skills(models.Model):
-    text = models.CharField(max_length=30)
+    text = models.TextField(max_length=30)
 
 
 class Tools(models.Model):
-    svg = models.ImageField(upload_to="uploads", validators=[])
+    svg = models.ImageField(upload_to="uploads/", validators=[])
 
 
 class Stats(models.Model):
@@ -47,6 +51,6 @@ class Stats(models.Model):
 
 
 class ClientsFeedbacks(models.Model):
-    text = models.CharField(max_length=200)
-    img = models.ImageField(upload_to="uploads")
-    name = models.CharField(max_length=100)
+    text = models.TextField(max_length=200)
+    img = models.ImageField(upload_to="uploads/")
+    name = models.TextField(max_length=100)

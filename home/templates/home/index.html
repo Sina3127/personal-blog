@@ -158,12 +158,10 @@
           data-aos-once="true"
         >
           <h1 class="mb-6">
-            👋 Hey there, <br />
-            It’s Jack Downey.
+            {{ header.title }}
           </h1>
           <p class="mb-md-7 mb-6 w-xxl-85 w-100">
-            Product Designer and Visual Developer in SF. I specialize in UI/UX
-            Design, Responsive Web Design, and Visual Development.
+            {{ header.paragraph }}
           </p>
           <div class="">
             <a href="contact.html" class="btn btn-primary btn-lg mb-6 mb-lg-0">
@@ -233,7 +231,7 @@
             class="hero-banner-image text-lg-start text-md-center text-xxl-end"
           >
             <img
-              src="images/hero/hero-image.png"
+              src="{{ header.img.url }}"
               class="z-100"
               alt="hero images"
             />
@@ -270,51 +268,21 @@
     </div>
     <!-- ==== Srart services Item =====-->
     <div class="row">
-      <div class="col-lg-4">
-        <div class="card text-center">
-          <div class="card-icon">
-            <img src="images/service/services-icon-1.svg" alt="services-icon" />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">UX, UI Design</h4>
-            <p class="card-text">
-              Strategy formulation is built on "the match between all
-              organisation resources and skills based program. Design is the
-              first thing that catches.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card text-center">
-          <div class="card-icon">
-            <img src="images/service/services-icon-2.svg" alt="services-icon" />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Web Design</h4>
-            <p class="card-text">
-              Strategy formulation is built on "the match between all
-              organisation resources and skills based program. Design is the
-              first thing that catches.
-            </p>
+      {% for i in provideServices %}
+        <div class="col-lg-4">
+          <div class="card text-center">
+            <div class="card-icon">
+              <img src="{{ i.svg.url }}" alt="services-icon" />
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">{{ i.title }}</h4>
+              <p class="card-text">
+                {{ i.text }}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card text-center mb-0">
-          <div class="card-icon">
-            <img src="images/service/services-icon-3.svg" alt="services-icon" />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">UX Research</h4>
-            <p class="card-text">
-              Strategy formulation is built on "the match between all
-              organisation resources and skills based program. Design is the
-              first thing that catches.
-            </p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
     <!-- ==== End services Item =====-->
   </div>
@@ -355,40 +323,30 @@
                 <div class="title">
                   <h5>Work Experience</h5>
                 </div>
-                <div class="content">
-                  <h4>Exclusive Addons</h4>
-                  <p>
-                    Lead Designer <br />
-                    August 2018 - December 2019
-                  </p>
-                </div>
-                <div class="content">
-                  <h4>Exclusive Addons</h4>
-                  <p>
-                    Designer Officer <br />
-                    December 2019 - Current
-                  </p>
-                </div>
+                {% for i in workExperience%}
+                  <div class="content">
+                    <h4>{{ i.title }}</h4>
+                    <p>
+                      {{ i.description }} <br />
+                      {{ i.start_date }} - {{ i.end_date }}
+                    </p>
+                  </div>
+                {% endfor %}
               </div>
               <!-- Start education -->
               <div class="education">
                 <div class="title">
                   <h5>Education</h5>
                 </div>
-                <div class="content">
-                  <h4>Graphic Arts Institute</h4>
-                  <p>
-                    MS • Information Design & Technology <br />
-                    2016 – 2017
-                  </p>
-                </div>
-                <div class="content">
-                  <h4>Florida Gulf Coast University</h4>
-                  <p>
-                    BA • Psychology <br />
-                    2014 – 2015
-                  </p>
-                </div>
+                {% for i in education %}
+                  <div class="content">
+                    <h4>{{ i.title }}</h4>
+                    <p>
+                      {{ i.description }} <br />
+                      {{ i.start_date }} – {{ i.end_date }}
+                    </p>
+                  </div>
+                {% endfor %}
               </div>
             </div>
             <!-- ==== End experiencEducation =====-->
@@ -398,24 +356,11 @@
                 <h5>Freelance Clients</h5>
               </div>
               <div class="freelance-wrapper">
-                <div class="item">
-                  <img src="images/resume/client-logo-5.svg" alt="" />
-                </div>
-                <div class="item">
-                  <img src="images/resume/client-logo-2.svg" alt="" />
-                </div>
-                <div class="item">
-                  <img src="images/resume/client-logo-3.svg" alt="" />
-                </div>
-                <div class="item">
-                  <img src="images/resume/client-logo-4.svg" alt="" />
-                </div>
-                <div class="item">
-                  <img src="images/resume/client-logo-6.svg" alt="" />
-                </div>
-                <div class="item">
-                  <img src="images/resume/client-logo-8.svg" alt="" />
-                </div>
+                {% for i in freelanceClients %}
+                  <div class="item">
+                    <img src="{{ i.logo.url }}" alt="" />
+                  </div>
+                {% endfor %}
               </div>
             </div>
             <!-- ==== End freelance =====-->
@@ -435,10 +380,9 @@
                 >
                   <div class="content me-xxl-8 me-0">
                     <ul class="list-unstyled">
-                      <li>HTML, CSS</li>
-                      <li>Front-end Development</li>
-                      <li>Back-End Development</li>
-                      <li>Java Script, PHP</li>
+                      {% for i in skills %}
+                        <li>{{ i.text }}</li>
+                      {% endfor %}
                     </ul>
                   </div>
                 </div>
@@ -449,24 +393,11 @@
                   <h5>Tools I use every day</h5>
                 </div>
                 <div class="tools-wrapper">
-                  <div class="item">
-                    <img src="images/resume/client-logo-21.svg" alt="" />
-                  </div>
-                  <div class="item">
-                    <img src="images/resume/client-logo-22.svg" alt="" />
-                  </div>
-                  <div class="item">
-                    <img src="images/resume/client-logo-23.svg" alt="" />
-                  </div>
-                  <div class="item">
-                    <img src="images/resume/client-logo-24.svg" alt="" />
-                  </div>
-                  <div class="item">
-                    <img src="images/resume/client-logo-25.svg" alt="" />
-                  </div>
-                  <div class="item">
-                    <img src="images/resume/client-logo-26.svg" alt="" />
-                  </div>
+                  {% for i in tools %}
+                    <div class="item">
+                      <img src="{{ i.svg.url }}" alt="" />
+                    </div>
+                  {% endfor %}
                 </div>
               </div>
             </div>
@@ -668,7 +599,7 @@
           <div class="counter-up-content">
             <div class="counter-up-content-item">
               <div class="counter-percent">
-                <span class="counter">150</span><span class="percent">+</span>
+                <span class="counter">{{ stats.projectsCompleted }} +</span><span class="percent">+</span>
               </div>
               <h5>PROJECTS COMPLETED</h5>
             </div>
@@ -676,7 +607,7 @@
           <div class="counter-up-content">
             <div class="counter-up-content-item">
               <div class="counter-percent">
-                <span class="counter">06</span><span class="percent">+</span>
+                <span class="counter">{{ stats.designAwards }} +</span><span class="percent">+</span>
               </div>
               <h5>DESIGN AWARDS</h5>
             </div>
@@ -684,7 +615,7 @@
           <div class="counter-up-content">
             <div class="counter-up-content-item">
               <div class="counter-percent">
-                <span class="counter">11</span><span class="percent">+</span>
+                <span class="counter">{{ stats.YearsExperience }} +</span><span class="percent">+</span>
               </div>
               <h5>YEARS EXPERIENCE</h5>
             </div>
@@ -692,7 +623,7 @@
           <div class="counter-up-content">
             <div class="counter-up-content-item">
               <div class="counter-percent">
-                <span class="counter">72</span><span class="percent">+</span>
+                <span class="counter">{{ stats.happyClients }} +</span><span class="percent">+</span>
               </div>
               <h5>HAPPY CLIENTS</h5>
             </div>
@@ -706,140 +637,29 @@
         </div>
         <!--=========== Start feedback-slider =============-->
         <div class="feedback-slider">
-          <div class="feedback-slider-item" data-dot-img="images/feedback/client-5.png"
-          >
-            <div class="icon">
-              <img src="images/feedback/icon.svg" alt="icon" />
-            </div>
-            <div class="content">
-              <h3>
-                Jack is really good designer. I’m happy to work with him. dolor
-                sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.Contrary to popular
-                belief, Lorem Ipsum is not simply random text. It has roots in a
-                piece of classical Latin literature.
-              </h3>
-            </div>
-            <div class="review">
-              <div class="profile">
-                <div class="logo">
-                  <img src="images/feedback/prfile.png" alt="" />
-                </div>
-                <div class="info">
-                  <h5>Jenny Wilson</h5>
-                  <span>at</span>
-                  <h6>L'Oréal</h6>
+          {% for i in clientsFeedbacks %}
+            <div class="feedback-slider-item" data-dot-img="images/feedback/client-4.png"
+            >
+              <div class="icon">
+                <img src="{{ i.img.url }}" alt="icon" />
+              </div>
+              <div class="content">
+                <h3>
+                  {{ i.text }}
+                </h3>
+              </div>
+              <div class="review">
+                <div class="profile">
+                  <div class="logo">
+                    <img src="{{ i.img.url }}" alt="" />
+                  </div>
+                  <div class="info">
+                    <h5>{{ i.name }}</h5>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="feedback-slider-item" data-dot-img="images/feedback/client-1.png">
-            <div class="icon">
-              <img src="images/feedback/icon.svg" alt="icon" />
-            </div>
-            <div class="content">
-              <h3>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five
-              </h3>
-            </div>
-            <div class="review">
-              <div class="profile">
-                <div class="logo">
-                  <img src="images/feedback/prfile-two.png" alt="" />
-                </div>
-                <div class="info">
-                  <h5>Darlene Robertson</h5>
-                  <span>at</span>
-                  <h6>L'Oréal</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="feedback-slider-item" data-dot-img="images/feedback/client-2.png"
-          >
-            <div class="icon">
-              <img src="images/feedback/icon.svg" alt="icon" />
-            </div>
-            <div class="content">
-              <h3>
-                It is a long established fact that a reader will be distracted
-                by the readable content of a page when looking at its layout.
-                The point of using Lorem Ipsum is that it has a more-or-less
-                normal distribution of letters, as opposed to using 'Content
-                here, content here', making it look like
-              </h3>
-            </div>
-            <div class="review">
-              <div class="profile">
-                <div class="logo">
-                  <img src="images/feedback/prfile-three.png" alt="" />
-                </div>
-                <div class="info">
-                  <h5>Brooklyn Simmons</h5>
-                  <span>at</span>
-                  <h6>L'Oréal</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="feedback-slider-item" data-dot-img="images/feedback/client-3.png"
-          >
-            <div class="icon">
-              <img src="images/feedback/icon.svg" alt="icon" />
-            </div>
-            <div class="content">
-              <h3>
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical Latin literature from
-                45 BC, making it over 2000 years old. Richard McClintock, a
-                Latin professor at Hampden-Sydney College in Virginia, looked up
-                one of the more obscure Latin words
-              </h3>
-            </div>
-            <div class="review">
-              <div class="profile">
-                <div class="logo">
-                  <img src="images/feedback/prfile-four.png" alt="" />
-                </div>
-                <div class="info">
-                  <h5>Sabo Masties</h5>
-                  <span>at</span>
-                  <h6>L'Oréal</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="feedback-slider-item" data-dot-img="images/feedback/client-4.png"
-          >
-            <div class="icon">
-              <img src="images/feedback/icon.svg" alt="icon" />
-            </div>
-            <div class="content">
-              <h3>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
-                slightly believable. If you are going to use a passage of Lorem
-                Ipsum, you need to be sure there
-              </h3>
-            </div>
-            <div class="review">
-              <div class="profile">
-                <div class="logo">
-                  <img src="images/feedback/prfile-five.png" alt="" />
-                </div>
-                <div class="info">
-                  <h5>Sabo Masties</h5>
-                  <span>at</span>
-                  <h6>L'Oréal</h6>
-                </div>
-              </div>
-            </div>
-          </div>
+          {% endfor %}
         </div>
         <!--=========== End feedback-slider =============-->
       </div>
