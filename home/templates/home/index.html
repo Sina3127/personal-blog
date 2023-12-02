@@ -272,7 +272,7 @@
         <div class="col-lg-4">
           <div class="card text-center">
             <div class="card-icon">
-              <img src="{{ i.svg.url }}" alt="services-icon" />
+              <img src="{{ i.svg.url }}" alt="services-icon" class="img-fluid"/>
             </div>
             <div class="card-body">
               <h4 class="card-title">{{ i.title }}</h4>
@@ -358,7 +358,7 @@
               <div class="freelance-wrapper">
                 {% for i in freelanceClients %}
                   <div class="item">
-                    <img src="{{ i.logo.url }}" alt="" />
+                    <img src="{{ i.logo.url }}" alt="" class="img-fluid" />
                   </div>
                 {% endfor %}
               </div>
@@ -638,10 +638,10 @@
         <!--=========== Start feedback-slider =============-->
         <div class="feedback-slider">
           {% for i in clientsFeedbacks %}
-            <div class="feedback-slider-item" data-dot-img="images/feedback/client-4.png"
+            <div class="feedback-slider-item" data-dot-img="{{ i.img.url }}"
             >
               <div class="icon">
-                <img src="{{ i.img.url }}" alt="icon" />
+                <img src="{% static 'images/feedback/icon.svg' %}" alt="icon" />
               </div>
               <div class="content">
                 <h3>

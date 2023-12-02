@@ -9,14 +9,14 @@ class Home(TemplateView):
     template_name = "home/index.html"
 
     def get(self, request):
-        header = Header.objects.all()
+        header = Header.objects.last()
         provideServices = ProvideServices.objects.all()
         workExperience = WorkExperience.objects.all()
         education = Education.objects.all()
         freelanceClients = FreelanceClients.objects.all()
         skills = Skills.objects.all()
         tools = Tools.objects.all()
-        stats = Stats.objects.all()
+        stats = Stats.objects.last()
         clientsFeedbacks = ClientsFeedbacks.objects.all()
 
         context = {
