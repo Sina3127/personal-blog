@@ -158,10 +158,10 @@
           data-aos-once="true"
         >
           <h1 class="mb-6">
-            {{ header.title }}
+            {{ header.title|safe }}
           </h1>
           <p class="mb-md-7 mb-6 w-xxl-85 w-100">
-            {{ header.paragraph }}
+            {{ header.paragraph|safe }}
           </p>
           <div class="">
             <a href="contact.html" class="btn btn-primary btn-lg mb-6 mb-lg-0">
@@ -275,9 +275,9 @@
               <img src="{{ i.svg.url }}" alt="services-icon" class="img-fluid"/>
             </div>
             <div class="card-body">
-              <h4 class="card-title">{{ i.title }}</h4>
+              <h4 class="card-title">{{ i.title|safe }}</h4>
               <p class="card-text">
-                {{ i.text }}
+                {{ i.text|safe }}
               </p>
             </div>
           </div>
@@ -325,9 +325,9 @@
                 </div>
                 {% for i in workExperience%}
                   <div class="content">
-                    <h4>{{ i.title }}</h4>
+                    <h4>{{ i.title|safe }}</h4>
                     <p>
-                      {{ i.description }} <br />
+                      {{ i.description|safe }} <br />
                       {{ i.start_date }} - {{ i.end_date }}
                     </p>
                   </div>
@@ -340,9 +340,9 @@
                 </div>
                 {% for i in education %}
                   <div class="content">
-                    <h4>{{ i.title }}</h4>
+                    <h4>{{ i.title|safe }}</h4>
                     <p>
-                      {{ i.description }} <br />
+                      {{ i.description|safe }} <br />
                       {{ i.start_date }} – {{ i.end_date }}
                     </p>
                   </div>
@@ -381,7 +381,7 @@
                   <div class="content me-xxl-8 me-0">
                     <ul class="list-unstyled">
                       {% for i in skills %}
-                        <li>{{ i.text }}</li>
+                        <li>{{ i.text|safe }}</li>
                       {% endfor %}
                     </ul>
                   </div>
@@ -615,7 +615,7 @@
           <div class="counter-up-content">
             <div class="counter-up-content-item">
               <div class="counter-percent">
-                <span class="counter">{{ stats.YearsExperience }} +</span><span class="percent">+</span>
+                <span class="counter">{{ stats.yearsExperience }} +</span><span class="percent">+</span>
               </div>
               <h5>YEARS EXPERIENCE</h5>
             </div>
@@ -645,7 +645,7 @@
               </div>
               <div class="content">
                 <h3>
-                  {{ i.text }}
+                  {{ i.text|safe }}
                 </h3>
               </div>
               <div class="review">
@@ -654,7 +654,7 @@
                     <img src="{{ i.img.url }}" alt="" />
                   </div>
                   <div class="info">
-                    <h5>{{ i.name }}</h5>
+                    <h5>{{ i.name|safe }}</h5>
                   </div>
                 </div>
               </div>
